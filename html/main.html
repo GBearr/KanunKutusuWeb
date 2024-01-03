@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ana Sayfa</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../css/main.css">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container">
+        <!-- Logo ya da Projenin Adının Bulunduğu Bölüm -->
+        <a class="navbar-brand" href="main.html">Kanun Kutusu</a>
+
+        <!-- Küçük ekranlarda menüyü aç/kapat butonu -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar elemanları -->
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav ml-auto">
+            <a class="nav-item nav-link active" href="profil.html">Profilim</a>
+            <a class="nav-item nav-link" href="giris.html">Çıkış Yap</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <section class="container my-5">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card">
+            <img
+              class="card-img-top"
+              src="https://via.placeholder.com/350x200"
+              alt="Yeni Teklifler"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Yeni Teklifler</h5>
+              <p class="card-text">
+                En güncel kanun tekliflerini inceleyin ve tartışın.
+              </p>
+              <a href="teklif.html" class="btn btn-primary">Daha fazla...</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <img
+              class="card-img-top"
+              src="https://via.placeholder.com/350x200"
+              alt="Haberler ve Duyurular"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Değerlendirilen Teklifler</h5>
+              <p class="card-text">
+                Değerlendirme sürecinde olan kanun tekliflerini görmek için
+                tıklayınız.
+              </p>
+              <a href="degerlendirme.html" class="btn btn-primary"
+                >Daha fazla...</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <img
+              class="card-img-top"
+              src="https://via.placeholder.com/350x200"
+              alt="Sıkça Sorulan Sorular"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Sonuçlandırılan Kanun Teklifleri</h5>
+              <p class="card-text">
+                Kabul edilen ve reddedilen kanun tekliflerini görmek için
+                tıklayınız.
+              </p>
+              <a href="sonuclandi.html" class="btn btn-primary"
+                >Daha fazla...</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="container my-5">
+      <div class="row">
+        <div class="col-md-4" style="margin: auto;">
+          <div class="card">
+            <img
+              class="card-img-top"
+              src="https://via.placeholder.com/350x200"
+              alt="Yeni Teklifler"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Değerlendirmeye Açık Kanun Tasarıları</h5>
+              <p class="card-text">
+                Kanun kutusunda değerlendirmeye açık olan kanun tasarılarına ulaşmak için tıklayınız.
+              </p>
+              <a href="tasari.html" class="btn btn-primary">Daha fazla...</a>
+            </div>
+          </div>
+        </div>
+        
+    </section>
+
+    <footer class="text-muted py-5">
+      <div class="container">
+        <p class="m-0 text-center">
+          Kanun Kutusu &copy; Bir vatandaşlık girişimidir. Tüm hakları saklıdır.
+        </p>
+      </div>
+    </footer>
+
+    <!-- Opsiyonel JavaScript; Bootstrap JS, jQuery ve Popper -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

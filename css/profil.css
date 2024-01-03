@@ -1,0 +1,48 @@
+/* Profillerin arkaplanı */
+#profilBilgileri {
+  margin: auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+/* Container */
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.row {
+  width: 80%;
+}
+
+/* Profil adı ve soyadı */
+#adi,
+#soyadi {
+  font-weight: bold;
+}
+
+/* Sekmelerin altında boşluk bırakma */
+#myTabContent {
+  margin-top: 20px;
+}
+
+/* Aktif sekme */
+.nav-tabs .nav-item .nav-link.active {
+  background-color: blue;
+  color: white;
+}
+
+/* Pasif sekme */
+.nav-tabs .nav-item .nav-link {
+  color: black;
+}
+
+/* Sekme içerikleri */
+.tab-pane {
+  padding: 20px;
+}

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sosyal Medya Tarzı Kanun Tasarısı Sayfası</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/main.css" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container">
+        <!-- Logo ya da Projenin Adının Bulunduğu Bölüm -->
+        <a class="navbar-brand" href="main.html">Kanun Kutusu</a>
+
+        <!-- Küçük ekranlarda menüyü aç/kapat butonu -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar elemanları -->
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav ml-auto">
+            <a class="nav-item nav-link active" href="giris.html">Giriş Yap</a>
+            <a class="nav-item nav-link" href="kayit.html">Kayıt Ol</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div id="post-container" class="container"></div>
+
+    <!-- Option 1: Bootstrap Bundle with Popper (includes jQuery) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script>
+      var targetSupport = 1000;
+
+      function increaseSupport(id) {
+        var currentSupportElement = document.getElementById(
+          "currentSupport-" + id
+        );
+        var targetSupportElement = document.getElementById(
+          "targetSupport-" + id
+        );
+        var progressBarElement = document.getElementById("progressBar-" + id);
+
+        var currentSupport = parseInt(currentSupportElement.textContent);
+        var targetSupport = parseInt(targetSupportElement.textContent);
+
+        if (currentSupport < targetSupport && canSupport(id)) {
+          currentSupport++;
+          var supportPercent = (currentSupport / targetSupport) * 100;
+
+          currentSupportElement.textContent = currentSupport;
+          progressBarElement.style.width = supportPercent + "%";
+          progressBarElement.textContent =
+            parseFloat(supportPercent).toFixed(2) + "%";
+
+          setSupportedTeklif(id);
+        }
+
+        saveSupportToLocal(id, currentSupport);
+        updateSupportValue(id, currentSupport);
+      }
+
+      function decreaseSupport(id) {
+        var currentSupportElement = document.getElementById(
+          "currentSupport-" + id
+        );
+        var targetSupportElement = document.getElementById(
+          "targetSupport-" + id
+        );
+        var progressBarElement = document.getElementById("progressBar-" + id);
+
+        var currentSupport = parseInt(currentSupportElement.textContent);
+        var targetSupport = parseInt(targetSupportElement.textContent);
+
+        if (currentSupport > 0 && canUndoSupport(id)) {
+          currentSupport--;
+          var supportPercent = (currentSupport / targetSupport) * 100;
+
+          currentSupportElement.textContent = currentSupport;
+          progressBarElement.style.width = supportPercent + "%";
+          progressBarElement.textContent =
+            parseFloat(supportPercent).toFixed(2) + "%";
+
+          removeSupportedTeklif(id);
+        }
+
+        saveSupportToLocal(id, currentSupport);
+        updateSupportValue(id, currentSupport);
+      }
+
+      function canSupport(id) {
+        var supportedTeklifler =
+          JSON.parse(sessionStorage.getItem("supportedTeklifler")) || [];
+        return !supportedTeklifler.includes(id);
+      }
+
+      function canUndoSupport(id) {
+        var supportedTeklifler =
+          JSON.parse(sessionStorage.getItem("supportedTeklifler")) || [];
+        return supportedTeklifler.includes(id);
+      }
+
+      function setSupportedTeklif(id) {
+        var supportedTeklifler =
+          JSON.parse(sessionStorage.getItem("supportedTeklifler")) || [];
+        supportedTeklifler.push(id);
+        sessionStorage.setItem(
+          "supportedTeklifler",
+          JSON.stringify(supportedTeklifler)
+        );
+      }
+
+      function removeSupportedTeklif(id) {
+        var supportedTeklifler =
+          JSON.parse(sessionStorage.getItem("supportedTeklifler")) || [];
+        var index = supportedTeklifler.indexOf(id);
+        if (index > -1) {
+          supportedTeklifler.splice(index, 1);
+        }
+        sessionStorage.setItem(
+          "supportedTeklifler",
+          JSON.stringify(supportedTeklifler)
+        );
+      }
+
+      function updateSupportValue(id, support) {
+        var teklifler = JSON.parse(localStorage.getItem("teklifler")) || [];
+
+        for (var i = 0; i < teklifler.length; i++) {
+          if (teklifler[i].id === id) {
+            teklifler[i].support = support;
+            break;
+          }
+        }
+
+        localStorage.setItem("teklifler", JSON.stringify(teklifler));
+      }
+
+      function saveSupportToLocal(id, support) {
+        var savedSupports = JSON.parse(localStorage.getItem("supports")) || {};
+        savedSupports[id] = support;
+        localStorage.setItem("supports", JSON.stringify(savedSupports));
+      }
+
+      function addComment(id) {
+        var commentInput = document.getElementById("commentInput");
+        var comment = getUsersInput(commentInput);
+
+        var commentsList = document.querySelector(`#comment-${id} ul`);
+
+        if (commentsList) {
+          var newComment = document.createElement("li");
+          newComment.textContent = comment;
+          commentsList.appendChild(newComment);
+
+          commentInput.value = "";
+
+          saveCommentToLocal(comment);
+        }
+      }
+
+      function saveCommentToLocal(comment) {
+        var savedComments = JSON.parse(localStorage.getItem("comments")) || [];
+        savedComments.push(comment);
+        localStorage.setItem("comments", JSON.stringify(savedComments));
+      }
+
+      function getUsersInput(inputElement) {
+        return inputElement.value;
+      }
+      window.onload = function () {
+        var teklifler = JSON.parse(localStorage.getItem("teklifler")) || [];
+        var savedComments = JSON.parse(localStorage.getItem("comments")) || [];
+        var senderId = sessionStorage.getItem("userId");
+        var users = JSON.parse(localStorage.getItem("users"));
+        var sender = null;
+
+        for (var userId in users) {
+          if (users.hasOwnProperty(userId)) {
+            if (users[userId].id === parseInt(senderId)) {
+              sender = users[userId];
+              break;
+            }
+          }
+        }
+
+        var containerDiv = document.querySelector("#post-container");
+
+        savedComments.forEach(function (comment) {
+          var commentsList = document.createElement("ul");
+          var newComment = document.createElement("li");
+          newComment.textContent =
+            sender.firstName + " " + sender.lastName + " : " + comment;
+          commentsList.appendChild(newComment);
+
+          if (containerDiv) {
+            containerDiv.appendChild(commentsList);
+          }
+
+          saveCommentToLocal(comment);
+        });
+
+        var teklifler = JSON.parse(localStorage.getItem("teklifler")) || [];
+        var savedSupports = JSON.parse(localStorage.getItem("supports")) || {};
+
+        // Her bir teklif için post oluşturma
+        teklifler.forEach(function (teklif) {
+          var yeniPostDiv = document.createElement("div");
+          yeniPostDiv.classList.add("post");
+
+          yeniPostDiv.innerHTML = `
+<div class="post">
+    <div class="post-header">
+        <h4>Gönderen: ${teklif.sender}</h4>
+        <h5>${teklif.title}</h5>
+    </div>
+    <div class="post-content">
+        <p>
+            ${teklif.category}
+        </p>
+    </div>
+    <div class="post-content">
+        <p>
+            ${teklif.description}
+        </p>
+    </div>
+    <button id="supportBtn-${
+      teklif.id
+    }" class="btn btn-primary" onclick="increaseSupport(${teklif.id})">
+        Destekle
+    </button>
+    <button id="undoSupportBtn-${
+      teklif.id
+    }" class="btn btn-primary" onclick="decreaseSupport(${teklif.id})">
+        Desteği Geri Çek
+    </button>
+    <div id="supportInfo" class="my-3">
+        <h4>
+            Destekçi Sayısı: <span id="currentSupport-${teklif.id}">${
+            savedSupports[teklif.id] || 0
+          }</span> /
+            <span id="targetSupport-${teklif.id}">1000</span>
+        </h4>
+    </div>
+    <div class="progress">
+        <div
+            id="progressBar-${teklif.id}"
+            class="progress-bar"
+            role="progressbar"
+            style="width: ${((savedSupports[teklif.id] || 0) / 1000) * 100}%"
+            aria-valuenow="${savedSupports[teklif.id] || 0}"
+            aria-valuemin="0"
+            aria-valuemax="1000"
+        >
+            ${((savedSupports[teklif.id] || 0) / 1000) * 100}%
+        </div>
+    </div>
+        <hr />
+        <div>
+    <h6>Yorumlar:</h6>
+    <ul id="comments-${teklif.id}" class="list-unstyled"></ul>
+<input id="commentInput-${
+            teklif.id
+          }" type="text" class="form-control" placeholder="Yorumunuzu yazın..." aria-label="Yorumunuzu yazın" />
+<button class="btn btn-primary" onclick="addComment(${
+            teklif.id
+          })">Gönder</button>
+        </div>
+    </div>
+</div>
+    `;
+
+          var commentsList = document.createElement("ul");
+          yeniPostDiv.appendChild(commentsList);
+
+          if (containerDiv) {
+            containerDiv.appendChild(yeniPostDiv);
+          }
+        });
+      };
+    </script>
+    <!-- <script src="../js/tasari.js"></script> -->
+  </body>
+</html>

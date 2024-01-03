@@ -1,0 +1,106 @@
+body {
+  background: #517faf;
+  background: linear-gradient(to right, #697c88, #8a8e90);
+}
+
+.container {
+  max-width: 1200px;
+}
+
+/* Proposal Card */
+
+#proposal-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+/* Post */
+.post {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.5);
+}
+.post-header {
+  margin-bottom: 15px;
+}
+.post-content {
+  margin-bottom: 10px;
+}
+
+/* Teklif Sayfası */
+.proposal-form-container {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+.form-heading {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #495057;
+}
+#teklif-btn {
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
+}
+#card-teklif {
+  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+/* Main Page */
+.navbar {
+  background-color: transparent !important;
+  padding: 0.5rem 1rem;
+}
+
+.navbar a {
+  color: #f7f7f7 !important;
+}
+
+/*  Login ve Signup */
+.card-login {
+  max-width: 25rem;
+  margin: auto;
+  margin-top: 100px;
+  padding: 15px;
+  border: none;
+  border-radius: 20px;
+  background: #f7f7f7;
+  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+.card-login .card-title {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.form-group {
+  position: relative;
+}
+
+.form-group input {
+  padding-left: 40px;
+}
+
+.form-icon {
+  position: absolute;
+  z-index: 10;
+  left: 10px;
+  top: 9px;
+}
+
+footer p {
+  color: white;
+}

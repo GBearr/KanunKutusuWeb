@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profil Ekranı</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../css/main.css" />
+    <!-- <link rel="stylesheet" href="../css/profil.css" /> -->
+  </head>
+  <style>
+    /* Profillerin arkaplanı */
+    #profilBilgileri {
+      margin: auto;
+      padding: 2rem;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Container */
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .row {
+      width: 80%;
+      margin-bottom: 20px;
+    }
+
+    .tab-container {
+      width: 100%;
+    }
+
+    /* Profil adı ve soyadı */
+    #adi,
+    #soyadi {
+      font-weight: bold;
+    }
+
+    /* Sekmelerin altında boşluk bırakma */
+    #myTabContent {
+      margin-top: 20px;
+    }
+
+    /* Aktif sekme */
+    .nav-tabs .nav-item .nav-link.active {
+      background-color: blue;
+      color: white;
+    }
+
+    /* Pasif sekme */
+    .nav-tabs .nav-item .nav-link {
+      color: black;
+    }
+  </style>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div id="nav-container" class="container d-flex justify-content-between">
+        <!-- Logo ya da Projenin Adının Bulunduğu Bölüm -->
+        <a class="navbar-brand" href="main.html">Kanun Kutusu</a>
+
+        <!-- Küçük ekranlarda menüyü aç/kapat butonu -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar elemanları -->
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav ml-auto">
+            <a class="nav-item nav-link" href="giris.html">Çıkış Yap</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="container" style="flex-direction: column">
+      <div class="row">
+        <div class="col">
+          <div id="profilBilgileri">
+            <h2>Profil Bilgileri</h2>
+            <p>Adı: <span id="adi"></span></p>
+            <p>Soyadı: <span id="soyadi"></span></p>
+
+            <!-- Diğer profil bilgilerini buraya ekleyebilirsiniz -->
+          </div>
+        </div>
+      </div>
+      <div class="tab-container col-md-6">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item">
+            <a
+              class="nav-link active"
+              id="teklifler-tab"
+              data-toggle="tab"
+              href="#teklifler"
+              role="tab"
+              aria-controls="teklifler"
+              aria-selected="true"
+              >Teklifler</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              id="desteklenen-teklifler-tab"
+              data-toggle="tab"
+              href="#desteklenen-teklifler"
+              role="tab"
+              aria-controls="desteklenen-teklifler"
+              aria-selected="false"
+              >Desteklenen Teklifler</a
+            >
+          </li>
+        </ul>
+      </div>
+      <div class="tab-content" id="myTabContent">
+        <div
+          class="tab-pane fade show active"
+          id="teklifler"
+          role="tabpanel"
+          aria-labelledby="teklifler-tab"
+        >
+          <!-- Tekliflerin listesi -->
+          <ul id="teklifler-listesi"></ul>
+        </div>
+        <div
+          class="tab-pane fade"
+          id="desteklenen-teklifler"
+          role="tabpanel"
+          aria-labelledby="desteklenen-teklifler-tab"
+        >
+          <!-- Desteklenen tekliflerin listesi -->
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="../js/profil.js"></script>
+</html>
